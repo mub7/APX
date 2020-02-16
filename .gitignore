@@ -1,0 +1,6 @@
+Logs/Php72-Apache/*
+!Logs/Php72-Apache/.gitkeep
+Logs/Php73-Apache/*
+!Logs/Php73-Apache/.gitkeep
+Logs/Php74-Apache/*
+!Logs/Php74-Apache/.gitkeep

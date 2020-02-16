@@ -1,0 +1,70 @@
+#############################################################
+# This is a Docker-Compose configuration for setting up a fast PHP development environment.
+#
+# The configuration creates a relatively simple running PHP versions 7.2, 7.3 & 7.4 environments
+# with its own Apache web server environment.
+#
+# An XDebug environment is also made available for debugging purposes (on Port 9000).
+#
+# After starting the environment, programming in PHP can begin immediately. Have lots of fun with it.
+#
+# This Docker-Compose configuration and environment should only be used for development, training and test purposes.
+# It is not suitable for operation in production. Use at your own risk. No guarantee, liability or warranty.
+#
+#
+# Mustafa, 2020
+#############################################################
+
+# Definition of the container Apache Webserver with PHP Version 7.2 & Xdebug 2.8.0
+php72-apache:
+  #
+  # Create the Docker image from './Infrastracture/Php72-Apache/'
+  build: ./Infrastracture/Php72-Apache/
+    #
+    # Map the default http and https ports of the php72-apache container
+    # to the ports 872 & 472 of your host's loopback device.
+  ports:
+    - "127.0.0.1:872:80"
+    - "127.0.0.1:472:443"
+    #
+    # Make the php72-apache container mount the static user content
+    # and the log directories from your local file system.
+  volumes:
+    - ./Resources/Php72-Apache:/var/www/html
+    - ./Logs/Php72-Apache:/var/log/apache2
+
+
+# Definition of the container Apache Webserver with PHP Version 7.3 & Xdebug 2.8.0
+php73-apache:
+  #
+  # Create the Docker image from './Infrastracture/Php73-Apache/'
+  build: ./Infrastracture/Php73-Apache/
+  #
+  # Map the default http and https ports of the php73-apache container
+  # to the ports 873 & 473 of your host's loopback device.
+  ports:
+    - "127.0.0.1:873:80"
+    - "127.0.0.1:473:443"
+    #
+    # Make the php73-apache container mount the static user content
+    # and the log directories from your local file system.
+  volumes:
+    - ./Resources/Php73-Apache:/var/www/html
+    - ./Logs/Php73-Apache:/var/log/apache2
+
+# Definition of the container Apache Webserver with PHP Version 7.2 & Xdebug 2.9.0
+php74-apache:
+  #
+  # Create the Docker image from './Infrastracture/Php74-Apache/'
+  build: ./Infrastracture/Php74-Apache/
+  # Map the default http and https ports of the php74-apache container
+  # to the ports 874 & 474 of your host's loopback device.
+  ports:
+    - "127.0.0.1:874:80"
+    - "127.0.0.1:474:443"
+    #
+    # Make the php74-apache container mount the static user content
+    # and the log directories from your local file system.
+  volumes:
+    - ./Resources/Php74-Apache:/var/www/html
+    - ./Logs/Php74-Apache:/var/log/apache2
